@@ -5,7 +5,7 @@
 		                  "name": "apb_master",
 		                  "cmd": "./dsim_comp",
 		                  "wavesCmd": "./dsim_comp "
-                     },
+                     }
 	                ]
                },
                

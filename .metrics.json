@@ -41,17 +41,8 @@
 		                               }
 		                             ]
 	                             }
-                     	},
-                      {
-	                       "name": "apb_master regression",
-	                       "description": "Run each test multiple times",
-	                       "tests": {
-		                     "resultsDir": "/mux-flow/results",
-		                     "builds": ["apb_master"],
-		                     "listCmd": "<rootDir>/genMetricsList.py <rootDir>/regression_list.txt",
-		                     "listFile": "<rootDir>/regression_list.json"
-	                                }
-                    	}
+                     	}
+                    
                    ]
      }
 

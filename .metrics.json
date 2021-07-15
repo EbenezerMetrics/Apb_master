@@ -1,0 +1,57 @@
+{
+    "builds": {
+        	"list": [
+	                  {
+		                  "name": "apb_master",
+		                  "cmd": "./dsim_comp",
+		                  "wavesCmd": "./dsim_comp "
+                     },
+	                ]
+               },
+               
+    "regressions": [
+    	                {
+	                       "name": "apb_master sanity tests",
+	                       "description": "Sanity tests for CI",
+	                       "tests": {
+	                       "resultsDir": "/mux-flow/results",
+		                     "builds": ["apb_master"],
+		                     "list": [
+		                               {
+		                              	"name": "apb_write_only",
+			                              "iterations": 2,
+			                              "build": "apb_master",
+			                              "cmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_write_test",
+			                              "wavesCmd": "cd <resultsDir>; <rootDir>/dsim_run apb_write_test",
+			                              "logFile": "dsim.log",
+			                              "wavesFile": "waves.vcd.gz",
+			                              "metricsFile": "metrics.db",
+			                              "seed": "random"
+		                                 },
+		                               {
+			                             "name": "apb_test",
+			                             "iterations": 2,
+			                             "build": "apb_master",
+			                             "cmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_test",
+			                             "wavesCmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_test",
+			                             "logFile": "dsim.log",
+			                             "wavesFile": "waves.vcd.gz",
+			                             "metricsFile": "metrics.db",
+			                             "seed": "random"
+		                               }
+		                             ]
+	                             }
+                     	},
+                      {
+	                       "name": "apb_master regression",
+	                       "description": "Run each test multiple times",
+	                       "tests": {
+		                     "resultsDir": "/mux-flow/results",
+		                     "builds": ["apb_master"],
+		                     "listCmd": "<rootDir>/genMetricsList.py <rootDir>/regression_list.txt",
+		                     "listFile": "<rootDir>/regression_list.json"
+	                                }
+                    	}
+                   ]
+     }
+

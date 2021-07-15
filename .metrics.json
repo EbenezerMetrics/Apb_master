@@ -1,93 +1,35 @@
+  
 {
     "builds": {
-	"list": [
-	    {
-		"name": "chacha20",
-		"cmd": "./dsim_comp",
-		"wavesCmd": "./dsim_comp --waves"
-            }
-	    ,{
-		"name": "chacha20_codecov",
-		"cmd": "./dsim_comp --codecov",
-		"wavesCmd": "./dsim_comp --waves --codecov"
-	    }
-         ]
+        "list": [
+                   {
+                        "name": "sync_fifo",
+                        "cmd": "dsim -linebuf -work $ROOT_DIR/dsim_work -top fifo_tb -genimage sync_fifo  +incdir+$ROOT_DIR/ -F $ROOT_DIR/list.f ",
+                        "wavesCmd": "dsim -linebuf +acc+rwb  -work $ROOT_DIR/dsim_work -top fifo_tb -genimage sync_fifo  +incdir+$ROOT_DIR/ -F $ROOT_DIR/list.f"
+                    }
+            ]
     },
     "regressions": [
-	{
-	    "name": "chacha20 sanity tests",
-	    "description": "Sanity tests for CI",
-	    "tests": {
-		"resultsDir": "/mux-flow/results",
-		"builds": ["chacha20"],
-		"list": [
-		    {
-			"name": "x_basic_test",
-			"iterations": 2,
-			"build": "chacha20",
-			"cmd": "cd <resultsDir>; <rootDir>/dsim_run --test x_basic_test --seed <seed>",
-			"wavesCmd": "cd <resultsDir>; <rootDir>/dsim_run --test x_basic_test --seed <seed> --waves",
-			"logFile": "dsim.log",
-			"wavesFile": "waves.vcd.gz",
-			"metricsFile": "metrics.db",
-			"seed": "random"
-		    },
-		    {
-			"name": "x_random_test",
-			"iterations": 2,
-			"build": "chacha20",
-			"cmd": "cd <resultsDir>; <rootDir>/dsim_run --test x_random_test --seed <seed>",
-			"wavesCmd": "cd <resultsDir>; <rootDir>/dsim_run --test x_random_test --seed <seed> --waves",
-			"logFile": "dsim.log",
-			"wavesFile": "waves.vcd.gz",
-			"metricsFile": "metrics.db",
-			"seed": "random"
-		    }
-		]
-	    }
-	},
-	{
-	    "name": "chacha20 code coverage demo sanity",
-	    "description": "Code coverage demo with sanity tests",
-	    "tests": {
-		"resultsDir": "/mux-flow/results",
-		"builds": ["chacha20_codecov"],
-		"list": [
-		    {
-			"name": "x_basic_test",
-			"iterations": 2,
-			"build": "chacha20_codecov",
-			"cmd": "cd <resultsDir>; <rootDir>/dsim_run --codecov --test x_basic_test --seed <seed>",
-			"wavesCmd": "cd <resultsDir>; <rootDir>/dsim_run --codecov --test x_basic_test --codecov --seed <seed> --waves",
-			"logFile": "dsim.log",
-			"wavesFile": "waves.vcd.gz",
-			"metricsFile": "metrics.db",
-			"seed": "random"
-		    },
-		    {
-			"name": "x_random_test",
-			"iterations": 2,
-			"build": "chacha20_codecov",
-			"cmd": "cd <resultsDir>; <rootDir>/dsim_run --codecov --test x_random_test --seed <seed>",
-			"wavesCmd": "cd <resultsDir>; <rootDir>/dsim_run --codecov --test x_random_test --seed <seed> --waves",
-			"logFile": "dsim.log",
-			"wavesFile": "waves.vcd.gz",
-			"metricsFile": "metrics.db",
-			"seed": "random"
-		    }
-		]
-	    }
-	},
-	{
-	    "name": "chacha20 regression",
-	    "description": "Run each test multiple times",
-	    "tests": {
-		"resultsDir": "/mux-flow/results",
-		"builds": ["chacha20"],
-		"listCmd": "<rootDir>/genMetricsList.py <rootDir>/sources/dv/regression/regression_list.txt",
-		"listFile": "<rootDir>/sources/dv/regression/regression_list.json"
-	    }
-	}
-    ]
+                     {
+                         "name": "sync fifo sanity tests",
+                        "description": "Sanity tests for SF",
+                       "tests": {
+                                "resultsDir": "/mux-flow/results",
+                                "builds": ["sync_fifo"],                
+                                "list": [
+                                    {"name": "x_basic_test",
+                                         "iterations": 1,
+                                         "timeout": "5h",
+                                         "build": "sync_fifo",
+                                         "cmd": "cd <resultsDir>;dsim -linebuf -work $ROOT_DIR/dsim_work -image sync_fifo +acc+b  -sv_lib $UVM_HOME/src/dpi/libuvm_dpi.so  ",
+                                         "wavesCmd": "cd <resultsDir>;dsim -linebuf -work $ROOT_DIR/dsim_work -image sync_fifo +acc+b  -sv_lib $UVM_HOME/src/dpi/libuvm_dpi.so -waves waves.vcd.gz",
+                                         "logFile": "dsim.log",
+                                         "wavesFile": "waves.vcd.gz",
+                                         "metricsFile": "metrics.db",
+                                         "seed": "random",
+                                         "isPass": [""]
+                                    }]
+                                 }
+                        }
+                     ]
 }
-

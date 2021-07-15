@@ -27,18 +27,7 @@
 			                              "wavesFile": "waves.vcd.gz",
 			                              "metricsFile": "metrics.db",
 			                              "seed": "random"
-		                                 },
-		                               {
-			                             "name": "apb_test",
-			                             "iterations": 2,
-			                             "build": "apb_master",
-			                             "cmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_test",
-			                             "wavesCmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_test",
-			                             "logFile": "dsim.log",
-			                             "wavesFile": "waves.vcd.gz",
-			                             "metricsFile": "metrics.db",
-			                             "seed": "random"
-		                               }
+		                                 }
 		                             ]
 	                             }
                      	}

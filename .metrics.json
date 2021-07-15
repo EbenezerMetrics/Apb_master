@@ -1,37 +1,93 @@
 {
     "builds": {
-        	"list": [
-	                  {
-		                  "name": "apb_master",
-		                  "cmd": "./dsim_comp",
-		                  "wavesCmd": "./dsim_comp "
-                     }
-	                ]
-               },
-               
+	"list": [
+	    {
+		"name": "chacha20",
+		"cmd": "./dsim_comp",
+		"wavesCmd": "./dsim_comp --waves"
+            }
+	    ,{
+		"name": "chacha20_codecov",
+		"cmd": "./dsim_comp --codecov",
+		"wavesCmd": "./dsim_comp --waves --codecov"
+	    }
+         ]
+    },
     "regressions": [
-    	                {
-	                       "name": "apb_master sanity tests",
-	                       "description": "Sanity tests for CI",
-	                       "tests": {
-	                       "resultsDir": "/mux-flow/results",
-		                     "builds": ["apb_master"],
-		                     "list": [
-		                               {
-		                              	"name": "apb_write_only",
-			                              "iterations": 2,
-			                              "build": "apb_master",
-			                              "cmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_write_test",
-			                              "wavesCmd": "cd <resultsDir>; <rootDir>/dsim_run apb_write_test",
-			                              "logFile": "dsim.log",
-			                              "wavesFile": "waves.vcd.gz",
-			                              "metricsFile": "metrics.db",
-			                              "seed": "random"
-		                                 }
-		                             ]
-	                             }
-                     	}
-                    
-                   ]
-     }
+	{
+	    "name": "chacha20 sanity tests",
+	    "description": "Sanity tests for CI",
+	    "tests": {
+		"resultsDir": "/mux-flow/results",
+		"builds": ["chacha20"],
+		"list": [
+		    {
+			"name": "x_basic_test",
+			"iterations": 2,
+			"build": "chacha20",
+			"cmd": "cd <resultsDir>; <rootDir>/dsim_run --test x_basic_test --seed <seed>",
+			"wavesCmd": "cd <resultsDir>; <rootDir>/dsim_run --test x_basic_test --seed <seed> --waves",
+			"logFile": "dsim.log",
+			"wavesFile": "waves.vcd.gz",
+			"metricsFile": "metrics.db",
+			"seed": "random"
+		    },
+		    {
+			"name": "x_random_test",
+			"iterations": 2,
+			"build": "chacha20",
+			"cmd": "cd <resultsDir>; <rootDir>/dsim_run --test x_random_test --seed <seed>",
+			"wavesCmd": "cd <resultsDir>; <rootDir>/dsim_run --test x_random_test --seed <seed> --waves",
+			"logFile": "dsim.log",
+			"wavesFile": "waves.vcd.gz",
+			"metricsFile": "metrics.db",
+			"seed": "random"
+		    }
+		]
+	    }
+	},
+	{
+	    "name": "chacha20 code coverage demo sanity",
+	    "description": "Code coverage demo with sanity tests",
+	    "tests": {
+		"resultsDir": "/mux-flow/results",
+		"builds": ["chacha20_codecov"],
+		"list": [
+		    {
+			"name": "x_basic_test",
+			"iterations": 2,
+			"build": "chacha20_codecov",
+			"cmd": "cd <resultsDir>; <rootDir>/dsim_run --codecov --test x_basic_test --seed <seed>",
+			"wavesCmd": "cd <resultsDir>; <rootDir>/dsim_run --codecov --test x_basic_test --codecov --seed <seed> --waves",
+			"logFile": "dsim.log",
+			"wavesFile": "waves.vcd.gz",
+			"metricsFile": "metrics.db",
+			"seed": "random"
+		    },
+		    {
+			"name": "x_random_test",
+			"iterations": 2,
+			"build": "chacha20_codecov",
+			"cmd": "cd <resultsDir>; <rootDir>/dsim_run --codecov --test x_random_test --seed <seed>",
+			"wavesCmd": "cd <resultsDir>; <rootDir>/dsim_run --codecov --test x_random_test --seed <seed> --waves",
+			"logFile": "dsim.log",
+			"wavesFile": "waves.vcd.gz",
+			"metricsFile": "metrics.db",
+			"seed": "random"
+		    }
+		]
+	    }
+	},
+	{
+	    "name": "chacha20 regression",
+	    "description": "Run each test multiple times",
+	    "tests": {
+		"resultsDir": "/mux-flow/results",
+		"builds": ["chacha20"],
+		"listCmd": "<rootDir>/genMetricsList.py <rootDir>/sources/dv/regression/regression_list.txt",
+		"listFile": "<rootDir>/sources/dv/regression/regression_list.json"
+	    }
+	}
+    ]
+}
 

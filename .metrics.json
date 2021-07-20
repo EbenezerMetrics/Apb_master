@@ -27,7 +27,7 @@
 			                              "logFile": "dsim.log",
 			                              "wavesFile": "waves.vcd.gz",
 			                              "metricsFile": "metrics.db",
-						      "isPass": [""]
+						      "isPass": [""],
 			                              "seed": "random"
 		                                 },
 		                               {
@@ -39,7 +39,7 @@
 			                             "logFile": "dsim.log",
 			                             "wavesFile": "waves.vcd.gz",
 			                             "metricsFile": "metrics.db",
-						     "isPass": [""]
+						     "isPass": [""],
 			                             "seed": "random"
 		                               }
 		                             ]
@@ -51,7 +51,7 @@
 	                       "tests": {
 		                     "resultsDir": "/mux-flow/results",
 		                     "builds": ["apb_master"],
-				     "isPass": [""]
+				     "isPass": [""],
 		                     "listCmd": "<rootDir>/genMetricsList.py <rootDir>/regression_list.txt",
 		                     "listFile": "<rootDir>/regression_list.json"
 	                                }

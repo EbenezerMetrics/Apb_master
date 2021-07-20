@@ -24,7 +24,7 @@
 			                              "build": "apb_master",
 			                              "cmd": "dsim_sim apb_write_test",
 			                              "wavesCmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_write_test",
-			                              "logFile": "dsim.log",
+			                              "logFile": "<resultsDir>/dsim.log",
 			                              "wavesFile": "waves.vcd.gz",
 			                              "metricsFile": "metrics.db",
 						      "isPass": [""],

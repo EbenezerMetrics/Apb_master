@@ -23,7 +23,7 @@
 			                              "iterations": 2,
 			                              "build": "apb_master",
 			                              "cmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_write_test",
-			                              "wavesCmd": "cd <resultsDir>; <rootDir>/dsim_run apb_write_test",
+			                              "wavesCmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_write_test",
 			                              "logFile": "dsim.log",
 			                              "wavesFile": "waves.vcd.gz",
 			                              "metricsFile": "metrics.db",

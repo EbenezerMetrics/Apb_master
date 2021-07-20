@@ -7,8 +7,8 @@ parser = argparse.ArgumentParser(description='Script to convert regression test 
 parser.add_argument('testFile', help='Test list filename')
 args = parser.parse_args()
 
-runCmdBase = "cd /mux-flow/results; <rootDir>/dsim_run --seed <seed> --test "
-runCmdWavesBase = "cd /mux-flow/results; <rootDir>/dsim_run --waves --seed <seed> --test "
+runCmdBase = "cd /mux-flow/results; <rootDir>/dsim_sim "
+runCmdWavesBase = "cd /mux-flow/results; <rootDir>/dsim_sim "
 
 testList = []
 
@@ -20,14 +20,13 @@ with open(args.testFile, 'r') as testFile:
             (testName, iterations) = line.split(':')
             test["name"] = testName
             test["iterations"] = int(iterations)
-                
-            test["build"] = "chacha20"
+            test["logFile"] = "dsim_sim_log"    
+            test["build"] = "apb_master"
             test["cmd"] = runCmdBase + test["name"]
             test["wavesCmd"] = runCmdWavesBase + test["name"]
             test["wavesFile"] = "waves.vcd.gz"
             test["metricsFile"] = "metrics.db"
-            test["seed"] = "random"
-            
+                        
             testList.append(test)
 
 jsonTestFile = args.testFile.replace(".txt", ".json", 1)

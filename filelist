@@ -3,6 +3,7 @@ apb_item.sv
 apb_driver.sv 
 apb_sequencer.sv 
 apb_sequence.sv 
+apb_cover.sv 
 apb_agent.sv 
 apb_env.sv 
 apb_test.sv

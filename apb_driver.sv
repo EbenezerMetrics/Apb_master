@@ -7,6 +7,9 @@ class apb_master_driver extends uvm_driver#(apb_item);
 
   virtual apb_interface apb_if; 
 
+  uvm_analysis_port #(apb_item) Drvr2Sb_port; 
+  uvm_analysis_port #(apb_item) Rcvr2Sb_port; 
+
   `uvm_component_utils_begin(apb_master_driver)
   `uvm_component_utils_end
 
@@ -16,6 +19,8 @@ class apb_master_driver extends uvm_driver#(apb_item);
 
   virtual function void build_phase(uvm_phase phase); 
   super.build(); 
+  Drvr2Sb_port = new("Drvr2Sb", this); 
+  Rcvr2Sb_port = new("Rcvr2Sb", this); 
   if (!uvm_config_db#(virtual apb_interface):: get (this, "","apb_if",apb_if))
 	  `uvm_fatal ("NOVIF", {"virtual interface must be set for :",get_full_name(),".apb_if"}); 
   endfunction: build_phase 
@@ -27,12 +32,17 @@ class apb_master_driver extends uvm_driver#(apb_item);
 	    seq_item_port.get_next_item(req); 
 	  `uvm_info("MYINFO1","Entered Driver got data from sequencer ",UVM_LOW); 
 	    $cast(apb_xaction, req); 
-	    req.print(); 
+
+	    //req.print(); 
+	    if (req.PWRITE == 1'b1)
+	    Drvr2Sb_port.write(req); 
 	    drive_master_transfer(apb_xaction); 
-	    req.print(); 
+	    //req.print(); 
 	  `uvm_info("MYINFO1","Exited Driver master transfer ",UVM_LOW); 
 	    rsp = req; 
-	    rsp.print(); 
+	    //rsp.print(); 
+	    if (req.PWRITE == 1'b0)
+	    Rcvr2Sb_port.write(rsp); 
 	  `uvm_info("MYINFO1","Got response for req",UVM_LOW); 
 	    seq_item_port.item_done(rsp); 
 	  `uvm_info("MYINFO1","sent response to Seq",UVM_LOW); 

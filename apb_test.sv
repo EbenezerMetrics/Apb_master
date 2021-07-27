@@ -18,10 +18,10 @@ class apb_test extends uvm_test;
 
 	task run_phase(uvm_phase phase); 
 		phase.raise_objection(this); 
-	//fork 
+	fork 
 	        seq.start(env.apb_agt.sequencer); 
-	  #1000;
-	//join
+	        #10000;
+        join_any
 		phase.drop_objection(this); 
          endtask :run_phase
 
@@ -47,10 +47,10 @@ class apb_cont_write_read_test extends uvm_test;
 
 	task run_phase(uvm_phase phase);
 		phase.raise_objection(this);
-	//fork
+	fork
 	        seq.start(env.apb_agt.sequencer);
-	  #1000;
-	//join
+	        #10000;
+        join_any
 		phase.drop_objection(this);
          endtask :run_phase
 
@@ -76,10 +76,10 @@ class apb_write_read_test extends uvm_test;
 
 	task run_phase(uvm_phase phase);
 		phase.raise_objection(this);
-	//fork
+	fork
 	        seq.start(env.apb_agt.sequencer);
-	  #1000;
-	//join
+	        #10000;
+        join_any
 		phase.drop_objection(this);
          endtask :run_phase
 
@@ -105,10 +105,10 @@ class apb_write_test extends uvm_test;
 
 	task run_phase(uvm_phase phase);
 		phase.raise_objection(this);
-	//fork
+	fork
 	        seq.start(env.apb_agt.sequencer);
 	  #1000;
-	//join
+        join_any
 		phase.drop_objection(this);
          endtask :run_phase
 

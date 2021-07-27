@@ -29,7 +29,7 @@ class apb_sequence extends uvm_sequence#(apb_item);
 			   req.PADDR ==  i; 
 		   })
 	   get_response(rsp);
-	    rsp.print();
+	   // rsp.print();
            end 
 	   for (int i= 0; i <10 ; i++) begin 
             `uvm_info ("MYINFO","passing packet2 with read data to driver ", UVM_LOW ); 
@@ -42,7 +42,7 @@ class apb_sequence extends uvm_sequence#(apb_item);
 	   get_response(rsp);
             `uvm_info ("MYINFO","Got response from Driver ", UVM_LOW ); 
           end 
-	    rsp.print(); 
+	    //rsp.print(); 
          endtask
 endclass
 class apb_sequence_cont_write_read  extends uvm_sequence#(apb_item);
@@ -74,7 +74,7 @@ class apb_sequence_cont_write_read  extends uvm_sequence#(apb_item);
 			   req.PADDR == 16'hcdcd;
 		   })
 	   get_response(rsp);
-	    rsp.print();
+	    //rsp.print();
             `uvm_info ("MYINFO","passing packet2 with read data to driver ", UVM_LOW );
 	  `uvm_do_with (req,
 		          {req.PDATA ==  32'h0;
@@ -85,7 +85,7 @@ class apb_sequence_cont_write_read  extends uvm_sequence#(apb_item);
 	   get_response(rsp);
             `uvm_info ("MYINFO","Got response from Driver ", UVM_LOW );
           end
-	    rsp.print();
+	    //rsp.print();
          endtask
 endclass
 
@@ -117,7 +117,7 @@ class apb_sequence_write_read_only extends uvm_sequence#(apb_item);
 			   req.PADDR == 16'hcdcd;
 		   })
 	   get_response(rsp);
-	    rsp.print();
+	    //rsp.print();
             `uvm_info ("MYINFO","passing packet2 with read data to driver ", UVM_LOW ); 
 	  `uvm_do_with (req,
 		          {req.PDATA ==  32'h0;
@@ -127,7 +127,7 @@ class apb_sequence_write_read_only extends uvm_sequence#(apb_item);
             `uvm_info ("MYINFO","waiting for response from Driver ", UVM_LOW ); 
 	   get_response(rsp);
             `uvm_info ("MYINFO","Got response from Driver ", UVM_LOW ); 
-	    rsp.print(); 
+	    //rsp.print(); 
          endtask
 endclass
 
@@ -163,7 +163,7 @@ class apb_sequence_write_only extends uvm_sequence#(apb_item);
             `uvm_info ("MYINFO","waiting for response from Driver ", UVM_LOW );
 	   get_response(rsp);
             `uvm_info ("MYINFO","Got response from Driver ", UVM_LOW );
-	    rsp.print();
+	    //rsp.print();
          endtask
 endclass
 

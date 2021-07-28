@@ -1,9 +1,10 @@
+///////////////////////////////////
+// APB sequencer                 //
+// ////////////////////////////////
 import uvm_pkg::*; 
 `include "uvm_macros.svh"
 class apb_sequencer extends uvm_sequencer #(apb_item); 
 
-	// Decl slave monitor 
-	//
 `uvm_sequencer_utils_begin(apb_sequencer)
 `uvm_sequencer_utils_end
 

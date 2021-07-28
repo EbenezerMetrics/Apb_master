@@ -1,3 +1,9 @@
+//////////////////////////////////////////////////////////////////
+// This file contains the agent file                           ///
+// instantiates the driver                                      //
+//              the sequeuncer                                  //
+//              the scoreboard                                  //
+//////////////////////////////////////////////////////////////////
 import uvm_pkg::*; 
 `include "uvm_macros.svh"
 

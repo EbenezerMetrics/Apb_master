@@ -1,5 +1,9 @@
 import uvm_pkg::*;
 `include "uvm_macros.svh"
+//////////////////////////////////////////////////////////////////////////////////////////
+// APB sequences - 4 sequences (write_only , write read, continuous writei              //
+// interleaved read and write                                                           //
+// ///////////////////////////////////////////////////////////////////////////////////////
 class apb_sequence extends uvm_sequence#(apb_item); 
 
 	apb_item req; 

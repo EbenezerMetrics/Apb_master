@@ -34,6 +34,11 @@ begin
 	    lprdata = mem[paddr]; 
          end 
     end 	 
+    else 
+    begin 
+	    lpready =1'b0; 
+	    lprdata = 31'b0;
+    end 	    
 end 
 
 assign pready = lpready; 

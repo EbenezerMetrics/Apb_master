@@ -87,10 +87,16 @@ class apb_master_driver extends uvm_driver#(apb_item);
        apb_if.PWDATA <= master_item.PDATA; 
        @(apb_if.PCLOCK); 
        @(apb_if.PCLOCK); 
+       @(apb_if.PCLOCK); 
+       @(apb_if.PCLOCK); 
+       apb_if.PSEL <= 1'b0;
+       apb_if.PENABLE <= 1'b0;
+       apb_if.PSTRB <= 4'b0000;
      end  
      else if (master_item.PWRITE == 1'b0)
      begin 
         `uvm_info("MYINFO0","within read cycle ",UVM_LOW); 
+        @(apb_if.PCLOCK); 
         @(apb_if.PCLOCK); 
 	  `uvm_info("MYINFO1","within read cycle ",UVM_LOW); 
        apb_if.PSEL <= 1'b1;
@@ -101,7 +107,14 @@ class apb_master_driver extends uvm_driver#(apb_item);
        apb_if.PADDR <= master_item.PADDR;
        @(apb_if.PCLOCK); 
        @(apb_if.PCLOCK); 
+       @(apb_if.PCLOCK); 
+       @(apb_if.PCLOCK); 
        master_item.PDATA = apb_if.PRDATA ;  
+       //@(apb_if.PCLOCK); 
+       //@(apb_if.PCLOCK); 
+       apb_if.PSEL <= 1'b0;
+       apb_if.PENABLE <= 1'b0;
+       apb_if.PSTRB <= 4'b0000;
      end 	
   endtask
 

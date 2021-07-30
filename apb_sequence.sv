@@ -75,7 +75,8 @@ class apb_sequence_cont_write_read  extends uvm_sequence#(apb_item);
 	  `uvm_do_with (req,
 		          {req.PDATA ==  32'hABAB;
 		           req.PWRITE == 1'b1;
-			   req.PADDR == 16'hcdcd;
+			   //req.PADDR == 16'hcdcd;
+			   req.PADDR == i;
 		   })
 	   get_response(rsp);
 	    //rsp.print();
@@ -83,7 +84,8 @@ class apb_sequence_cont_write_read  extends uvm_sequence#(apb_item);
 	  `uvm_do_with (req,
 		          {req.PDATA ==  32'h0;
 		           req.PWRITE == 1'b0;
-			   req.PADDR == 16'hcdcd;
+			   //req.PADDR == 16'hcdcd;
+			   req.PADDR == i;
 		   })
             `uvm_info ("MYINFO","waiting for response from Driver ", UVM_LOW );
 	   get_response(rsp);

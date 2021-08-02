@@ -5,7 +5,7 @@
 	                  {
 		                  "name": "apb_master",
 		                  "cmd": "./dsim_comp",
-		                  "wavesCmd": "./dsim_comp "
+		                  "wavesCmd": "./dsim_comp_waves"
                      }
 	                ]
                },
@@ -23,7 +23,7 @@
 			                              "iterations": 2,
 			                              "build": "apb_master",
 			                              "cmd": "cd /mux-flow/results; <rootDir>/dsim_sim apb_write_test",
-			                              "wavesCmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_write_test",
+			                              "wavesCmd": "cd <resultsDir>; <rootDir>/dsim_sim_waves apb_write_test",
 			                              "logFile": "dsim_sim_log",
 			                              "wavesFile": "waves.vcd.gz",
 			                              "metricsFile": "metrics.db",
@@ -35,7 +35,7 @@
 			                             "iterations": 2,
 			                             "build": "apb_master",
 			                             "cmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_test",
-			                             "wavesCmd": "cd <resultsDir>; <rootDir>/dsim_sim apb_test",
+			                             "wavesCmd": "cd <resultsDir>; <rootDir>/dsim_sim_waves apb_test",
 			                             "logFile": "dsim_sim_log",
 			                             "wavesFile": "waves.vcd.gz",
 			                             "metricsFile": "metrics.db",

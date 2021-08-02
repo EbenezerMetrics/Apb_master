@@ -8,7 +8,7 @@ parser.add_argument('testFile', help='Test list filename')
 args = parser.parse_args()
 
 runCmdBase = "cd /mux-flow/results; <rootDir>/dsim_sim "
-runCmdWavesBase = "cd /mux-flow/results; <rootDir>/dsim_sim "
+runCmdWavesBase = "cd /mux-flow/results; <rootDir>/dsim_sim_waves "
 
 testList = []
 

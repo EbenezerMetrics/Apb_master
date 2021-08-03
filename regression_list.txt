@@ -1,4 +1,5 @@
 apb_test :1
 apb_cont_write_read_test :1
+apb_interlvd_write_read_test :1
 apb_write_read_test :1 
 apb_write_test :1 

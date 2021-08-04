@@ -1,13 +1,13 @@
-apb_interface.sv 
-apb_item.sv
-apb_driver.sv 
-apb_sequencer.sv 
-apb_sequence.sv 
-apb_scoreboard.sv
-apb_cover.sv 
-apb_agent.sv 
-apb_env.sv 
-apb_test.sv
-slave_model.sv
-apb_master_tb.sv
+./testbench/apb_interface.sv 
+./common/apb_item.sv
+./agent/apb_driver.sv 
+./agent/apb_sequencer.sv 
+./common/apb_sequence.sv 
+./agent/apb_scoreboard.sv 
+./env/apb_cover.sv 
+./agent/apb_agent.sv 
+./env/apb_env.sv 
+./common/apb_test.sv
+./testbench/slave_model.sv
+./testbench/apb_master_tb.sv
 

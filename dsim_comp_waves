@@ -1,1 +1,1 @@
-dsim -code-cov block -code-cov-scope-specs code_cov_scope_file -genimage image +acc+rwb +incdir+$UVM_HOME/src $UVM_HOME/src/uvm_pkg.sv -F ./filelist 
+dsim -code-cov block -code-cov-scope-specs $ROOT_DIR/code_cov_scope_file -genimage image +acc+rwb +incdir+$UVM_HOME/src $UVM_HOME/src/uvm_pkg.sv -F ./filelist 

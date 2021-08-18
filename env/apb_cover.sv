@@ -38,7 +38,7 @@ class apb_cov extends uvm_component;
                 `uvm_info("MYINFO1"," Inside coverable block",UVM_LOW);
 	        forever begin 
 		   @(posedge apb_if.PCLOCK); 
-		   apb_grp.sample(); 
+		   //apb_grp.sample(); 
 		end 
 
 

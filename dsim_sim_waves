@@ -1,1 +1,1 @@
-    dsim  -code-cov all -image image -sv_lib $UVM_HOME/src/dpi/libuvm_dpi.so +UVM_TESTNAME=$1 -l dsim_sim_log -waves waves.vcd.gz -work $ROOT_DIR/dsim_work
+    dsim  -code-cov block -code-cov-scope-specs $ROOT_DIR/code_cov_scope_file -image image -sv_lib $UVM_HOME/src/dpi/libuvm_dpi.so +UVM_TESTNAME=$1 -l dsim_sim_log -waves waves.vcd.gz -work $ROOT_DIR/dsim_work

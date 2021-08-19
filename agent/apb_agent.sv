@@ -12,6 +12,7 @@ class apb_agent extends uvm_agent;
 	apb_sequencer sequencer;
 	apb_master_driver    driver;
 	apb_scoreboard Sbd; 
+	apb_cov apb_cv; 
 
 	`uvm_component_utils_begin(apb_agent)
 	`uvm_component_utils_end
@@ -26,6 +27,7 @@ class apb_agent extends uvm_agent;
 	  driver = apb_master_driver::type_id::create("driver",this);
 	  sequencer = apb_sequencer::type_id::create("sequencer",this); 
 	  Sbd = apb_scoreboard::type_id::create("Sbd",this); 
+	  apb_cv = apb_cov::type_id::create("apb_cv",this);
         endfunction: build   
 
 	virtual function void connect(); 

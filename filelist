@@ -4,6 +4,7 @@
 ./agent/apb_sequencer.sv 
 ./common/apb_sequence.sv 
 ./agent/apb_scoreboard.sv 
+./env/apb_subscriber.sv 
 ./env/apb_cover.sv 
 ./agent/apb_agent.sv 
 ./env/apb_env.sv 

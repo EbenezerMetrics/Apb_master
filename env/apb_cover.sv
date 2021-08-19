@@ -4,7 +4,8 @@
 import uvm_pkg::*; 
 `include "uvm_macros.svh"
 
-class apb_cov extends uvm_component; 
+//class apb_cov extends uvm_component; 
+class apb_cov extends uvm_subscriber; 
 	`uvm_component_utils(apb_cov)
 
 	virtual apb_interface apb_if; 
